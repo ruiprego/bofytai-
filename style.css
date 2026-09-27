@@ -270,3 +270,204 @@ footer {
     min-height: auto;
   }
 }
+/* =========================================
+   BOFYT AI — Goal Journey
+   ========================================= */
+
+#goalResult {
+  width: min(760px, 100%);
+  margin: 50px auto 0;
+}
+
+.result-card {
+  padding: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px);
+  text-align: left;
+  animation: bofytAppear 0.45s ease forwards;
+}
+
+.result-label {
+  color: #777;
+  font-size: 11px !important;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 18px !important;
+}
+
+.result-card h2 {
+  font-size: clamp(32px, 6vw, 58px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.result-message {
+  color: #fff !important;
+  font-size: 22px !important;
+  margin-bottom: 8px !important;
+}
+
+.result-description {
+  color: #888 !important;
+  font-size: 16px !important;
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.continue-button {
+  margin-top: 30px;
+  padding: 15px 22px;
+  border: 0;
+  border-radius: 13px;
+  background: #fff;
+  color: #050505;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.continue-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* QUESTION */
+
+.question-box {
+  margin-top: 35px;
+}
+
+.question-box label {
+  display: block;
+  color: #ddd;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.question-box textarea {
+  width: 100%;
+  min-height: 130px;
+  padding: 18px;
+  resize: vertical;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+  color: #fff;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.question-box textarea::placeholder {
+  color: #666;
+}
+
+.question-box textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* PATH PREVIEW */
+
+.path-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.path-preview > div {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.path-preview span {
+  display: block;
+  color: #666;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.path-preview strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.path-preview p {
+  color: #777 !important;
+  font-size: 13px !important;
+  line-height: 1.5;
+  margin: 0 !important;
+}
+
+/* GOAL SUMMARY */
+
+.goal-summary {
+  margin-top: 35px;
+  display: grid;
+  gap: 12px;
+}
+
+.goal-summary p {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #999 !important;
+  font-size: 14px !important;
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+.goal-summary strong {
+  color: #fff;
+}
+
+/* ANIMATION */
+
+@keyframes bofytAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  #goalResult {
+    margin-top: 35px;
+  }
+
+  .result-card {
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  .result-card h2 {
+    letter-spacing: -1.5px;
+  }
+
+  .path-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .path-preview > div {
+    padding: 18px;
+  }
+
+}
