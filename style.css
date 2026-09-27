@@ -743,4 +743,10 @@ footer {
 
   .feature-card,
   .card {
-    min-height
+    min-height: auto;
+  }
+
+  .plan-card {
+    padding: 30px;
+  }
+}
