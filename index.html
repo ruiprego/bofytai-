@@ -11,102 +11,151 @@
 
 <body>
 
+  <!-- BACKGROUND -->
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
   <!-- NAVIGATION -->
-  <nav class="navbar">
+  <header class="navbar">
+
     <div class="logo">
       BOFYT <span>AI</span>
     </div>
 
-    <div class="nav-actions">
+    <nav>
       <a href="#how-it-works">How it works</a>
       <a href="#pricing">Pricing</a>
-    </div>
-  </nav>
+    </nav>
+
+    <button class="mobile-menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </header>
 
 
-  <!-- HERO -->
   <main>
 
+    <!-- HERO -->
     <section class="hero">
 
-      <div class="eyebrow">
-        AI FOR WHAT'S NEXT
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          AI FOR WHAT'S NEXT
+        </div>
+
+        <h1>
+          What do you
+          <br>
+          want
+          <br>
+          <span>to achieve?</span>
+        </h1>
+
+        <p class="hero-description">
+          Tell BOFYT AI what you want to achieve.
+          We'll help turn the idea into a clear path forward.
+        </p>
+
+
+        <!-- GOAL INPUT -->
+        <div class="goal-box">
+
+          <div class="goal-icon">✦</div>
+
+          <input
+            id="goalInput"
+            type="text"
+            placeholder="I want to..."
+            autocomplete="off"
+          >
+
+          <button id="goalButton">
+            <span>Start</span>
+            <strong>→</strong>
+          </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+        <div id="goalResult"></div>
+
       </div>
-
-      <h1>
-        What do you want<br>
-        to achieve?
-      </h1>
-
-      <p>
-        Tell BOFYT AI what you want to achieve.
-        We'll help turn the idea into a clear path forward.
-      </p>
-
-
-      <!-- GOAL INPUT -->
-      <div class="goal-box">
-
-        <input
-          id="goalInput"
-          type="text"
-          placeholder="I want to..."
-          autocomplete="off"
-        >
-
-        <button id="goalButton">
-          Start
-        </button>
-
-      </div>
-
-
-      <!-- AI RESULT -->
-      <div id="goalResult"></div>
 
     </section>
 
 
     <!-- HOW IT WORKS -->
-    <section id="how-it-works">
+    <section id="how-it-works" class="section">
 
-      <div class="container">
+      <div class="section-container">
 
-        <h2>
-          One goal.<br>
-          A path forward.
-        </h2>
+        <div class="section-heading">
 
-        <p class="section-intro">
-          BOFYT AI turns what you want to achieve into
-          something you can actually act on.
-        </p>
-
-
-        <div class="grid">
-
-          <div class="feature-card">
-            <h3>01 — Understand</h3>
-            <p>
-              Tell us what you want. BOFYT AI helps
-              clarify the goal behind the idea.
-            </p>
+          <div class="small-label">
+            THE BOFYT APPROACH
           </div>
 
+          <h2>
+            One goal.
+            <br>
+            <span>A path forward.</span>
+          </h2>
+
+          <p>
+            BOFYT AI turns what you want to achieve
+            into something you can actually act on.
+          </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
           <div class="feature-card">
-            <h3>02 — Build</h3>
+
+            <div class="feature-number">01</div>
+
+            <h3>Understand</h3>
+
+            <p>
+              Tell us what you want.
+              BOFYT AI helps clarify the goal
+              behind the idea.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-number">02</div>
+
+            <h3>Build</h3>
+
             <p>
               Get a structured path with practical
               steps designed around your objective.
             </p>
+
           </div>
 
+
           <div class="feature-card">
-            <h3>03 — Achieve</h3>
+
+            <div class="feature-number">03</div>
+
+            <h3>Achieve</h3>
+
             <p>
-              Track progress, adapt the plan and keep
-              moving towards the outcome you want.
+              Track progress, adapt the plan and
+              keep moving towards the outcome you want.
             </p>
+
           </div>
 
         </div>
@@ -117,41 +166,58 @@
 
 
     <!-- EXPERIENCE -->
-    <section>
+    <section class="section experience">
 
-      <div class="container">
+      <div class="section-container">
 
-        <h2>
-          Your goals.<br>
-          Your direction.
-        </h2>
+        <div class="section-heading">
 
-        <p class="section-intro">
-          From starting a business to changing your career,
-          learning something new or planning your next move.
-        </p>
+          <div class="small-label">
+            BUILT AROUND YOU
+          </div>
 
-        <div class="grid">
+          <h2>
+            Your goals.
+            <br>
+            <span>Your direction.</span>
+          </h2>
 
-          <div class="card">
+          <p>
+            From starting a business to changing your career,
+            learning something new or planning your next move.
+          </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+            <div class="card-symbol">◎</div>
             <h3>Career</h3>
             <p>
-              Find your next opportunity and build a plan
-              to get there.
+              Find your next opportunity and build
+              a clear plan to get there.
             </p>
           </div>
 
-          <div class="card">
+
+          <div class="feature-card">
+            <div class="card-symbol">◇</div>
             <h3>Business</h3>
             <p>
-              Turn an idea into a structured business journey.
+              Turn an idea into a structured
+              business journey.
             </p>
           </div>
 
-          <div class="card">
+
+          <div class="feature-card">
+            <div class="card-symbol">✦</div>
             <h3>Personal</h3>
             <p>
-              Set meaningful goals and turn them into action.
+              Set meaningful goals and turn
+              them into action.
             </p>
           </div>
 
@@ -163,31 +229,43 @@
 
 
     <!-- PRICING -->
-    <section id="pricing">
+    <section id="pricing" class="section pricing-section">
 
-      <div class="container">
+      <div class="section-container">
 
-        <h2>
-          Choose your<br>
-          level of ambition.
-        </h2>
+        <div class="section-heading">
 
-        <p class="section-intro">
-          Start free. Upgrade when you want more from BOFYT AI.
-        </p>
+          <div class="small-label">
+            SIMPLE BY DESIGN
+          </div>
+
+          <h2>
+            Choose your
+            <br>
+            <span>level of ambition.</span>
+          </h2>
+
+          <p>
+            Start free. Upgrade when you want more
+            from BOFYT AI.
+          </p>
+
+        </div>
 
 
-        <div class="pricing">
+        <div class="pricing-grid">
 
 
           <!-- FREE -->
           <div class="plan-card">
 
-            <h3>Free</h3>
+            <div class="plan-top">
+              <h3>Free</h3>
 
-            <div class="price">
-              €0
-              <span>/month</span>
+              <div class="price">
+                €0
+                <span>/month</span>
+              </div>
             </div>
 
             <p>
@@ -208,19 +286,27 @@
           </div>
 
 
-          <!-- FOUNDING MEMBERS -->
-          <div class="plan-card founding">
+          <!-- FOUNDING -->
+          <div class="plan-card featured">
 
-            <h3>Founding Member</h3>
+            <div class="founder-badge">
+              FOUNDING MEMBER
+            </div>
 
-            <div class="price">
-              €6
-              <span>/month</span>
+            <div class="plan-top">
+
+              <h3>Founder</h3>
+
+              <div class="price">
+                €6
+                <span>/month</span>
+              </div>
+
             </div>
 
             <p>
-              Special lifetime-style founding access
-              for the first 5,000 members.
+              Special founding access for the first
+              5,000 members.
             </p>
 
             <ul>
@@ -241,11 +327,15 @@
           <!-- PRO -->
           <div class="plan-card">
 
-            <h3>Pro</h3>
+            <div class="plan-top">
 
-            <div class="price">
-              €25
-              <span>/month</span>
+              <h3>Pro</h3>
+
+              <div class="price">
+                €25
+                <span>/month</span>
+              </div>
+
             </div>
 
             <p>
@@ -275,11 +365,18 @@
 
 
     <!-- FINAL CTA -->
-    <section class="hero">
+    <section class="final-cta">
+
+      <div class="final-glow"></div>
+
+      <div class="small-label">
+        WHAT'S NEXT?
+      </div>
 
       <h2>
-        Your future starts<br>
-        with a goal.
+        Your future starts
+        <br>
+        <span>with a goal.</span>
       </h2>
 
       <p>
@@ -287,6 +384,8 @@
       </p>
 
       <div class="goal-box">
+
+        <div class="goal-icon">✦</div>
 
         <input
           id="goalInputBottom"
@@ -296,7 +395,8 @@
         >
 
         <button id="goalButtonBottom">
-          Start
+          <span>Start</span>
+          <strong>→</strong>
         </button>
 
       </div>
@@ -308,12 +408,24 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>BOFYT AI</p>
-    <p>What do you want to achieve?</p>
+
+    <div class="footer-logo">
+      BOFYT <span>AI</span>
+    </div>
+
+    <p>
+      AI FOR WHAT'S NEXT
+    </p>
+
+    <div class="footer-line"></div>
+
+    <small>
+      © 2026 BOFYT AI. All rights reserved.
+    </small>
+
   </footer>
 
 
-  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
 
 </body>
