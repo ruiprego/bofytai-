@@ -1,33 +1,35 @@
-/* =========================================
-   BOFYT AI — Core Interaction
-   ========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  const goalInput = document.querySelector("#goalInput");
-  const goalButton = document.querySelector("#goalButton");
-  const result = document.querySelector("#goalResult");
+  const inputs = [
+    {
+      input: document.getElementById("goalInput"),
+      button: document.getElementById("goalButton"),
+      result: document.getElementById("goalResult")
+    },
+    {
+      input: document.getElementById("goalInputBottom"),
+      button: document.getElementById("goalButtonBottom"),
+      result: document.getElementById("goalResult")
+    }
+  ];
 
-  if (!goalInput || !goalButton) {
-    console.log("BOFYT AI loaded.");
-    return;
-  }
+  function startGoal(input, result) {
+    if (!input) return;
 
-  function processGoal() {
-    const goal = goalInput.value.trim();
+    const goal = input.value.trim();
 
     if (!goal) {
-      goalInput.focus();
+      input.focus();
       return;
     }
 
     if (result) {
       result.innerHTML = `
-        <div class="card">
-          <span>YOUR GOAL</span>
-          <h3>${escapeHTML(goal)}</h3>
+        <div class="result-card">
+          <p class="result-label">YOUR GOAL</p>
+          <h2>${escapeHTML(goal)}</h2>
           <p>
-            BOFYT AI is understanding your goal and preparing
-            the next steps.
+            BOFYT AI is understanding your goal
+            and preparing your path forward.
           </p>
         </div>
       `;
@@ -39,46 +41,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  goalButton.addEventListener("click", processGoal);
+  inputs.forEach(({ input, button, result }) => {
+    if (!input || !button) return;
 
-  goalInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      processGoal();
-    }
-  });
+    button.addEventListener("click", () => {
+      startGoal(input, result);
+    });
 
-  function escapeHTML(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
-});
-
-
-/* =========================================
-   BOFYT AI — Smooth reveal
-   ========================================= */
-
-const revealElements = document.querySelectorAll(
-  ".card, .feature-card, .plan-card, section"
-);
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        startGoal(input, result);
       }
     });
-  },
-  {
-    threshold: 0.12
-  }
-);
+  });
 
-revealElements.forEach((element) => {
-  element.classList.add("reveal");
-  revealObserver.observe(element);
+  function escapeHTML(value) {
+    const element = document.createElement("div");
+    element.textContent = value;
+    return element.innerHTML;
+  }
+
+  /* Smooth reveal */
+
+  const elements = document.querySelectorAll(
+    ".feature, .card, .plan-card"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
 });
