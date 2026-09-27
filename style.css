@@ -1,3 +1,7 @@
+/* =========================================================
+   BOFYT AI — PREMIUM EXPERIENCE
+   ========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,11 +10,14 @@
 
 :root {
   --bg: #050505;
-  --surface: #0d0d0f;
+  --surface: #0b0b0c;
+  --surface-2: #101012;
   --text: #f5f5f7;
-  --muted: #8b8b93;
-  --line: rgba(255, 255, 255, 0.08);
-  --accent: #ffffff;
+  --muted: #85858d;
+  --soft: #b8b8bf;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-hover: rgba(255, 255, 255, 0.18);
+  --white: #ffffff;
 }
 
 html {
@@ -18,261 +25,243 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue",
-    Arial, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
+
   background:
     radial-gradient(
-      circle at 50% 20%,
-      rgba(255, 255, 255, 0.045),
-      transparent 35%
+      circle at 50% 12%,
+      rgba(255, 255, 255, 0.055),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(255, 255, 255, 0.025),
+      transparent 38%
     );
+
   z-index: -1;
 }
 
-/* HEADER */
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 
-header {
+.navbar {
   width: 100%;
-  padding: 28px 6%;
+  padding: 28px 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 3px;
   color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1;
 }
 
-nav {
+.logo span {
+  font-weight: 400;
+  letter-spacing: 2px;
+  opacity: 0.65;
+  margin-left: 4px;
+}
+
+.nav-actions {
   display: flex;
   align-items: center;
   gap: 28px;
 }
 
-nav a {
-  color: #aaa;
+.nav-actions a {
+  color: #8e8e95;
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s ease;
+  font-size: 13px;
+  transition: color 0.25s ease;
 }
 
-nav a:hover {
+.nav-actions a:hover {
   color: #fff;
 }
 
-/* HERO */
+/* =========================================================
+   GLOBAL SECTIONS
+   ========================================================= */
+
+main > section:not(.hero) {
+  width: 100%;
+  padding: 150px 6%;
+}
+
+.container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 85px);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
-  padding: 60px 24px 100px;
+
+  padding: 80px 24px 140px;
+
+  position: relative;
+}
+
+.eyebrow {
+  margin-bottom: 28px;
+
+  color: #b4b4ba;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .hero h1 {
-  max-width: 900px;
-  font-size: clamp(48px, 8vw, 92px);
-  line-height: 0.98;
-  letter-spacing: -4px;
+  max-width: 950px;
+
+  font-size: clamp(54px, 9vw, 108px);
+  line-height: 0.94;
+
+  letter-spacing: -6px;
   font-weight: 600;
-  margin-bottom: 28px;
+
+  margin-bottom: 38px;
 }
 
-.hero p {
-  max-width: 580px;
+.hero > p {
+  max-width: 650px;
+
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 42px;
+
+  font-size: 19px;
+  line-height: 1.65;
+
+  margin-bottom: 48px;
 }
 
-/* INPUT / CTA */
+/* =========================================================
+   GOAL INPUT
+   ========================================================= */
 
 .goal-box {
-  width: min(680px, 100%);
+  width: min(760px, 100%);
   position: relative;
 }
 
 .goal-box input {
   width: 100%;
-  height: 68px;
-  padding: 0 150px 0 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  background: rgba(255, 255, 255, 0.045);
+  height: 76px;
+
+  padding: 0 145px 0 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.035);
+
   color: #fff;
   outline: none;
-  font-size: 16px;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(20px);
+
+  font-family: inherit;
+  font-size: 17px;
+
+  backdrop-filter: blur(25px);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .goal-box input::placeholder {
-  color: #66666e;
+  color: #64646c;
 }
 
 .goal-box input:focus {
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.32);
+
+  background: rgba(255, 255, 255, 0.055);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 20px 80px rgba(0, 0, 0, 0.35);
 }
 
 .goal-box button {
   position: absolute;
-  right: 8px;
-  top: 8px;
-  height: 52px;
-  padding: 0 24px;
+
+  right: 9px;
+  top: 9px;
+
+  height: 58px;
+
+  padding: 0 29px;
+
   border: none;
-  border-radius: 13px;
+  border-radius: 16px;
+
   background: #fff;
   color: #050505;
-  font-size: 14px;
+
+  font-family: inherit;
+  font-size: 15px;
   font-weight: 600;
+
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .goal-box button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   opacity: 0.9;
 }
 
-/* FEATURES */
-
-.features {
-  width: min(1100px, 90%);
-  margin: 0 auto;
-  padding: 80px 0 120px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.feature {
-  padding: 32px;
-  min-height: 220px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.025);
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.feature:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.16);
-}
-
-.feature h3 {
-  font-size: 19px;
-  margin-bottom: 14px;
-}
-
-.feature p {
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 14px;
-}
-
-/* RESULT */
-
-.result {
-  width: min(900px, 90%);
-  margin: 0 auto;
-  padding: 70px 0 120px;
-  text-align: center;
-}
-
-.result h2 {
-  font-size: clamp(32px, 5vw, 56px);
-  letter-spacing: -2px;
-  margin-bottom: 18px;
-}
-
-.result p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* FOOTER */
-
-footer {
-  width: 100%;
-  padding: 40px 6%;
-  border-top: 1px solid var(--line);
-  color: #666;
-  text-align: center;
-  font-size: 13px;
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-  header {
-    padding: 22px 24px;
-  }
-
-  nav {
-    gap: 16px;
-  }
-
-  nav a {
-    display: none;
-  }
-
-  .hero {
-    min-height: calc(100vh - 70px);
-    padding: 40px 20px 80px;
-  }
-
-  .hero h1 {
-    font-size: clamp(46px, 14vw, 70px);
-    letter-spacing: -3px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .goal-box input {
-    height: 62px;
-    padding-right: 120px;
-  }
-
-  .goal-box button {
-    height: 46px;
-    padding: 0 18px;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-    padding-bottom: 80px;
-  }
-
-  .feature {
-    min-height: auto;
-  }
-}
-/* =========================================
-   BOFYT AI — Goal Journey
-   ========================================= */
+/* =========================================================
+   GOAL RESULT
+   ========================================================= */
 
 #goalResult {
   width: min(760px, 100%);
@@ -280,163 +269,338 @@ footer {
 }
 
 .result-card {
-  padding: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 44px;
+
+  border: 1px solid var(--line);
   border-radius: 28px;
+
   background: rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(20px);
+
+  backdrop-filter: blur(25px);
+
   text-align: left;
-  animation: bofytAppear 0.45s ease forwards;
+
+  animation: bofytAppear 0.5s ease forwards;
 }
 
 .result-label {
-  color: #777;
+  color: #77777f !important;
+
   font-size: 11px !important;
-  letter-spacing: 2px;
-  font-weight: 700;
+  font-weight: 700 !important;
+
+  letter-spacing: 2.5px;
+
   margin-bottom: 18px !important;
 }
 
 .result-card h2 {
-  font-size: clamp(32px, 6vw, 58px);
-  line-height: 1;
-  letter-spacing: -2px;
-  margin-bottom: 22px;
+  font-size: clamp(34px, 6vw, 62px);
+
+  line-height: 0.98;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 20px;
 }
 
-.result-message {
-  color: #fff !important;
-  font-size: 22px !important;
-  margin-bottom: 8px !important;
-}
+.result-card p:not(.result-label) {
+  color: var(--muted);
 
-.result-description {
-  color: #888 !important;
-  font-size: 16px !important;
-  line-height: 1.7;
-  max-width: 580px;
-}
-
-.continue-button {
-  margin-top: 30px;
-  padding: 15px 22px;
-  border: 0;
-  border-radius: 13px;
-  background: #fff;
-  color: #050505;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.continue-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-/* QUESTION */
-
-.question-box {
-  margin-top: 35px;
-}
-
-.question-box label {
-  display: block;
-  color: #ddd;
   font-size: 17px;
-  line-height: 1.5;
-  margin-bottom: 15px;
+
+  line-height: 1.65;
 }
 
-.question-box textarea {
-  width: 100%;
-  min-height: 130px;
-  padding: 18px;
-  resize: vertical;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.045);
-  color: #fff;
-  outline: none;
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 1.5;
+/* =========================================================
+   GENERAL HEADINGS
+   ========================================================= */
+
+main > section:not(.hero) h2 {
+  font-size: clamp(46px, 7vw, 82px);
+
+  line-height: 0.98;
+
+  letter-spacing: -4px;
+
+  font-weight: 600;
+
+  margin-bottom: 30px;
 }
 
-.question-box textarea::placeholder {
-  color: #666;
+.section-intro {
+  max-width: 680px;
+
+  color: var(--muted);
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  margin-bottom: 65px;
 }
 
-.question-box textarea:focus {
-  border-color: rgba(255, 255, 255, 0.3);
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+#how-it-works {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* PATH PREVIEW */
-
-.path-preview {
+.grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 35px;
+
+  gap: 18px;
 }
 
-.path-preview > div {
-  padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.025);
+.feature-card,
+.card,
+.plan-card {
+  border: 1px solid var(--line);
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.path-preview span {
-  display: block;
-  color: #666;
-  font-size: 11px;
-  letter-spacing: 1px;
+.feature-card.visible,
+.card.visible,
+.plan-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover,
+.card:hover,
+.plan-card:hover {
+  transform: translateY(-5px);
+
+  border-color: var(--line-hover);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+}
+
+.feature-card,
+.card {
+  padding: 34px;
+
+  min-height: 245px;
+}
+
+.feature-card h3,
+.card h3 {
+  font-size: 20px;
+
   margin-bottom: 18px;
 }
 
-.path-preview strong {
-  display: block;
-  font-size: 16px;
+.feature-card p,
+.card p {
+  color: var(--muted);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   PRICING
+   ========================================================= */
+
+#pricing {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.plan-card {
+  padding: 38px;
+}
+
+.plan-card.founding {
+  border-color: rgba(255, 255, 255, 0.22);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.025)
+    );
+}
+
+.plan-card h3 {
+  font-size: 20px;
+  margin-bottom: 28px;
+}
+
+.price {
+  font-size: 48px;
+
+  font-weight: 600;
+
+  letter-spacing: -2px;
+
+  margin-bottom: 20px;
+}
+
+.price span {
+  font-size: 14px;
+
+  color: var(--muted);
+
+  letter-spacing: 0;
+}
+
+.plan-card > p {
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  min-height: 70px;
+
+  margin-bottom: 25px;
+}
+
+.plan-card ul {
+  list-style: none;
+
+  display: grid;
+
+  gap: 13px;
+
+  margin-bottom: 32px;
+}
+
+.plan-card li {
+  color: #c4c4c9;
+
+  font-size: 14px;
+}
+
+.plan-card li::before {
+  content: "—";
+
+  color: #777;
+
+  margin-right: 10px;
+}
+
+.plan-card button {
+  width: 100%;
+
+  height: 50px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 14px;
+
+  background: #fff;
+  color: #050505;
+
+  font-family: inherit;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.plan-card button:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.hero:last-of-type {
+  min-height: auto;
+
+  padding-top: 180px;
+  padding-bottom: 180px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero:last-of-type h2 {
+  font-size: clamp(50px, 8vw, 90px);
+
+  line-height: 0.95;
+
+  letter-spacing: -5px;
+
+  margin-bottom: 28px;
+}
+
+.hero:last-of-type p {
+  margin-bottom: 38px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  padding: 45px 6%;
+
+  border-top: 1px solid var(--line);
+
+  text-align: center;
+
+  color: #55555d;
+
+  font-size: 12px;
+
+  letter-spacing: 0.5px;
+}
+
+footer p:first-child {
+  color: #aaa;
+
+  font-size: 13px;
+
+  letter-spacing: 3px;
+
   margin-bottom: 8px;
 }
 
-.path-preview p {
-  color: #777 !important;
-  font-size: 13px !important;
-  line-height: 1.5;
-  margin: 0 !important;
-}
-
-/* GOAL SUMMARY */
-
-.goal-summary {
-  margin-top: 35px;
-  display: grid;
-  gap: 12px;
-}
-
-.goal-summary p {
-  padding: 20px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.035);
-  color: #999 !important;
-  font-size: 14px !important;
-  line-height: 1.6;
-  margin: 0 !important;
-}
-
-.goal-summary strong {
-  color: #fff;
-}
-
-/* ANIMATION */
+/* =========================================================
+   ANIMATION
+   ========================================================= */
 
 @keyframes bofytAppear {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(18px);
   }
 
   to {
@@ -445,9 +609,83 @@ footer {
   }
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
+
+  .navbar {
+    padding: 24px 22px;
+  }
+
+  .logo {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .hero {
+    min-height: calc(100vh - 70px);
+
+    padding:
+      65px 18px
+      100px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+
+    letter-spacing: 1.7px;
+
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 14vw, 70px);
+
+    letter-spacing: -3.5px;
+
+    line-height: 0.94;
+
+    margin-bottom: 30px;
+  }
+
+  .hero > p {
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    margin-bottom: 35px;
+  }
+
+  .goal-box input {
+    height: 66px;
+
+    padding:
+      0
+      120px
+      0
+      20px;
+
+    border-radius: 20px;
+
+    font-size: 16px;
+  }
+
+  .goal-box button {
+    height: 50px;
+
+    right: 8px;
+    top: 8px;
+
+    padding: 0 20px;
+
+    border-radius: 14px;
+  }
 
   #goalResult {
     margin-top: 35px;
@@ -455,19 +693,63 @@ footer {
 
   .result-card {
     padding: 28px 22px;
+
     border-radius: 22px;
   }
 
   .result-card h2 {
-    letter-spacing: -1.5px;
+    letter-spacing: -2px;
   }
 
-  .path-preview {
+  main > section:not(.hero) {
+    padding:
+      105px
+      22px;
+  }
+
+  main > section:not(.hero) h2 {
+    font-size: clamp(44px, 12vw, 65px);
+
+    letter-spacing: -3px;
+  }
+
+  .section-intro {
+    font-size: 16px;
+
+    margin-bottom: 42px;
+  }
+
+  .grid,
+  .pricing {
     grid-template-columns: 1fr;
+
+    gap: 14px;
   }
 
-  .path-preview > div {
-    padding: 18px;
+  .feature-card,
+  .card {
+    min-height: auto;
+
+    padding: 28px;
   }
 
+  .plan-card {
+    padding: 30px 25px;
+  }
+
+  .hero:last-of-type {
+    padding:
+      130px
+      22px;
+  }
+
+  .hero:last-of-type h2 {
+    font-size: clamp(46px, 13vw, 68px);
+
+    letter-spacing: -3px;
+  }
+
+  footer {
+    padding: 35px 20px;
+  }
 }
