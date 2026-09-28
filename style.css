@@ -1,1368 +1,529 @@
-/* =========================================================
-   BOFYT AI — MASTER DESIGN
-   ========================================================= */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --bg: #02070d;
-  --bg-deep: #010409;
-  --surface: rgba(7, 20, 32, 0.72);
-  --surface-light: rgba(255, 255, 255, 0.035);
-
-  --text: #f7f9fc;
-  --muted: #929ba8;
-  --muted-light: #b7bec8;
-
-  --blue: #2aa9ff;
-  --blue-bright: #55c2ff;
-  --blue-deep: #087fd0;
-
-  --line: rgba(80, 181, 255, 0.22);
-  --white-line: rgba(255, 255, 255, 0.1);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Inter",
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
-  background:
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(0, 102, 180, 0.22),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 50% 65%,
-      rgba(0, 75, 145, 0.16),
-      transparent 35%
-    ),
-    linear-gradient(
-      180deg,
-      #02070d 0%,
-      #031323 45%,
-      #020b15 75%,
-      #010409 100%
-    );
-
-  background-attachment: fixed;
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-
-/* =========================================================
-   GLOBAL LIGHT
-   ========================================================= */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle at 50% 18%,
-      rgba(40, 160, 255, 0.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 50% 60%,
-      rgba(0, 120, 255, 0.08),
-      transparent 32%
-    );
-
-  z-index: -1;
-}
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-header {
-  position: relative;
-  z-index: 100;
-
-  width: 100%;
-  padding: 34px 6%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  <title>BOFYT AI — What do you want to achieve?</title>
 
-.logo {
-  color: #fff;
-  text-decoration: none;
+  <meta
+    name="description"
+    content="BOFYT AI turns what you want to achieve into a clear path forward."
+  >
 
-  font-size: 27px;
-  font-weight: 700;
-  letter-spacing: 5px;
-}
+  <link rel="stylesheet" href="style.css">
+</head>
 
-.logo span {
-  color: var(--blue);
-  font-weight: 500;
-  letter-spacing: 3px;
-}
+<body>
 
+  <!-- =========================
+       HEADER
+       ========================= -->
 
-/* DESKTOP NAV */
+  <header class="site-header">
 
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-}
+    <a href="#" class="logo">
+      BOFYT <span>AI</span>
+    </a>
 
-.desktop-nav a {
-  color: #b5bdc8;
-  text-decoration: none;
+    <nav class="desktop-nav">
+      <a href="#how-it-works">How it works</a>
+      <a href="#experience">Solutions</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
 
-  font-size: 14px;
-  font-weight: 500;
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  transition:
-    color 0.25s ease,
-    opacity 0.25s ease;
-}
+  </header>
 
-.desktop-nav a:hover {
-  color: #fff;
-}
 
+  <!-- =========================
+       MOBILE MENU
+       ========================= -->
 
-/* =========================================================
-   MENU BUTTON
-   ========================================================= */
+  <div class="mobile-menu" id="mobileMenu">
 
-.menu-button {
-  display: none;
+    <div class="mobile-menu-inner">
 
-  width: 42px;
-  height: 42px;
+      <a href="#how-it-works">How it works</a>
+      <a href="#experience">Solutions</a>
+      <a href="#pricing">Pricing</a>
 
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 50%;
+      <button
+        class="mobile-menu-close"
+        id="mobileMenuClose"
+      >
+        Close
+      </button>
 
-  background: rgba(255, 255, 255, 0.04);
+    </div>
 
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
+  </div>
 
-  cursor: pointer;
-}
 
-.menu-button span {
-  display: block;
+  <!-- =========================
+       MAIN
+       ========================= -->
 
-  width: 17px;
-  height: 1.5px;
+  <main>
 
-  background: #fff;
-}
 
+    <!-- =========================
+         HERO
+         ========================= -->
 
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
+    <section class="hero">
 
-.mobile-menu {
-  position: fixed;
-  inset: 0;
+      <div class="hero-glow"></div>
 
-  z-index: 200;
+      <div class="eyebrow">
+        AI FOR WHAT'S NEXT
+      </div>
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
+      <h1>
+        What do you<br>
+        want to<br>
+        <span>achieve?</span>
+      </h1>
 
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(0, 115, 210, 0.18),
-      transparent 40%
-    ),
-    rgba(1, 7, 13, 0.97);
+      <p class="hero-description">
+        Tell BOFYT AI what you want to achieve.
+        We'll help turn the idea into a clear path forward.
+      </p>
 
-  backdrop-filter: blur(24px);
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+      <!-- GOAL INPUT -->
 
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-}
+      <div class="goal-box">
 
-.mobile-menu.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
+        <div class="goal-sparkle">✦</div>
 
-.mobile-menu a {
-  color: #fff;
+        <input
+          id="goalInput"
+          type="text"
+          placeholder="I want to..."
+          autocomplete="off"
+          aria-label="Your goal"
+        >
 
-  text-decoration: none;
+        <button id="goalButton">
+          Start <span>→</span>
+        </button>
 
-  font-size: 28px;
-  font-weight: 600;
+      </div>
 
-  transition: color 0.2s ease;
-}
 
-.mobile-menu a:hover {
-  color: var(--blue);
-}
+      <!-- AI RESULT -->
 
-.mobile-menu-close {
-  margin-top: 20px;
+      <div id="goalResult"></div>
 
-  padding: 12px 22px;
+    </section>
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+    <!-- =========================
+         HOW IT WORKS
+         ========================= -->
 
-  font-size: 14px;
+    <section id="how-it-works" class="content-section">
 
-  cursor: pointer;
-}
+      <div class="container">
 
+        <div class="section-eyebrow">
+          HOW IT WORKS
+        </div>
 
-/* =========================================================
-   HERO
-   ========================================================= */
+        <h2>
+          One goal.<br>
+          A path forward.
+        </h2>
 
-.hero {
-  position: relative;
+        <p class="section-intro">
+          BOFYT AI turns what you want to achieve into
+          something you can actually act on.
+        </p>
 
-  min-height: calc(100vh - 100px);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+        <div class="features">
 
-  text-align: center;
+          <div class="feature">
 
-  padding:
-    150px 24px
-    160px;
-}
+            <span class="feature-number">
+              01
+            </span>
 
+            <h3>
+              Understand
+            </h3>
 
-/* HERO BLUE GLOW */
+            <p>
+              Tell us what you want.
+              BOFYT AI helps clarify the goal
+              behind the idea.
+            </p>
 
-.hero::before {
-  content: "";
+          </div>
 
-  position: absolute;
 
-  width: 700px;
-  height: 700px;
+          <div class="feature">
 
-  top: 60px;
-  left: 50%;
+            <span class="feature-number">
+              02
+            </span>
 
-  transform: translateX(-50%);
+            <h3>
+              Build
+            </h3>
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 125, 230, 0.17),
-      rgba(0, 80, 160, 0.06) 40%,
-      transparent 70%
-    );
+            <p>
+              Get a structured path with practical
+              steps designed around your objective.
+            </p>
 
-  filter: blur(30px);
+          </div>
 
-  pointer-events: none;
 
-  z-index: -1;
-}
+          <div class="feature">
 
+            <span class="feature-number">
+              03
+            </span>
 
-/* EYEBROW */
+            <h3>
+              Achieve
+            </h3>
 
-.eyebrow,
-.section-eyebrow {
-  color: #aeb8c5;
+            <p>
+              Track progress, adapt the plan and keep
+              moving towards the outcome you want.
+            </p>
 
-  font-size: 13px;
-  font-weight: 500;
+          </div>
 
-  letter-spacing: 6px;
+        </div>
 
-  text-transform: uppercase;
+      </div>
 
-  margin-bottom: 45px;
-}
+    </section>
 
 
-/* HERO TITLE */
+    <!-- =========================
+         EXPERIENCE
+         ========================= -->
 
-.hero h1 {
-  max-width: 900px;
+    <section
+      id="experience"
+      class="content-section experience-section"
+    >
 
-  font-size: clamp(
-    55px,
-    9vw,
-    104px
-  );
+      <div class="container">
 
-  line-height: 0.94;
+        <div class="section-eyebrow">
+          WHAT'S NEXT
+        </div>
 
-  letter-spacing: -5px;
+        <h2>
+          Your goals.<br>
+          Your direction.
+        </h2>
 
-  font-weight: 650;
+        <p class="section-intro">
+          From starting a business to changing your career,
+          learning something new or planning your next move.
+        </p>
 
-  color: #f7f8fa;
 
-  margin-bottom: 48px;
-}
+        <div class="features">
 
+          <div class="feature">
 
-/* HERO DESCRIPTION */
+            <span class="feature-icon">
+              ↗
+            </span>
 
-.hero > p {
-  max-width: 720px;
+            <h3>
+              Career
+            </h3>
 
-  color: var(--muted);
+            <p>
+              Find your next opportunity and build
+              a practical path to get there.
+            </p>
 
-  font-size: clamp(
-    17px,
-    2.5vw,
-    21px
-  );
+          </div>
 
-  line-height: 1.65;
 
-  margin-bottom: 55px;
-}
+          <div class="feature">
 
+            <span class="feature-icon">
+              ◇
+            </span>
 
-/* =========================================================
-   GOAL BOX
-   ========================================================= */
+            <h3>
+              Business
+            </h3>
 
-.goal-box {
-  width: min(720px, 100%);
+            <p>
+              Turn an idea into a structured
+              business journey.
+            </p>
 
-  position: relative;
+          </div>
 
-  display: flex;
-  align-items: center;
 
-  padding: 6px;
+          <div class="feature">
 
-  border-radius: 24px;
+            <span class="feature-icon">
+              +
+            </span>
 
-  border: 2px solid rgba(
-    35,
-    164,
-    255,
-    0.65
-  );
+            <h3>
+              Personal
+            </h3>
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4, 24, 40, 0.92),
-      rgba(2, 13, 23, 0.96)
-    );
+            <p>
+              Set meaningful goals and turn them
+              into action.
+            </p>
 
-  box-shadow:
-    0 0 25px rgba(0, 145, 255, 0.12),
-    0 0 80px rgba(0, 105, 220, 0.08);
+          </div>
 
-  overflow: hidden;
-}
+        </div>
 
+      </div>
 
-/* SMALL STAR */
+    </section>
 
-.goal-box::before {
-  content: "✦";
 
-  position: absolute;
+    <!-- =========================
+         PRICING
+         ========================= -->
 
-  top: -13px;
-  left: 50%;
+    <section
+      id="pricing"
+      class="content-section pricing-section"
+    >
 
-  transform: translateX(-50%);
+      <div class="container">
 
-  color: #fff;
+        <div class="section-eyebrow">
+          PRICING
+        </div>
 
-  font-size: 17px;
+        <h2>
+          Choose your<br>
+          level of ambition.
+        </h2>
 
-  text-shadow:
-    0 0 12px #fff,
-    0 0 25px var(--blue);
+        <p class="section-intro">
+          Start free. Upgrade when you want more
+          from BOFYT AI.
+        </p>
 
-  z-index: 3;
-}
 
+        <div class="pricing">
 
-.goal-box input {
-  flex: 1;
 
-  width: 100%;
-  height: 82px;
+          <div class="plan-card">
 
-  padding: 0 25px;
+            <div class="plan-top">
 
-  border: none;
-  outline: none;
+              <span class="plan-label">
+                START
+              </span>
 
-  background: transparent;
+              <h3>
+                Free
+              </h3>
 
-  color: #fff;
+            </div>
 
-  font-family: inherit;
+            <div class="price">
+              €0
+              <span>/month</span>
+            </div>
 
-  font-size: 18px;
-}
+            <p>
+              Everything you need to experience
+              BOFYT AI.
+            </p>
 
-.goal-box input::placeholder {
-  color: #687583;
-}
+            <ul>
+              <li>Goal discovery</li>
+              <li>Basic AI guidance</li>
+              <li>Personal goals</li>
+              <li>Progress tracking</li>
+            </ul>
 
+            <button>
+              Start Free
+            </button>
 
-/* BUTTON */
+          </div>
 
-.goal-box button {
-  flex-shrink: 0;
 
-  height: 70px;
+          <div class="plan-card founding">
 
-  padding: 0 32px;
+            <div class="founding-badge">
+              FOUNDING ACCESS
+            </div>
 
-  border: none;
-  border-radius: 18px;
+            <div class="plan-top">
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue-bright),
-      var(--blue)
-    );
+              <span class="plan-label">
+                EARLY
+              </span>
 
-  color: #fff;
+              <h3>
+                Founding Member
+              </h3>
 
-  font-size: 17px;
-  font-weight: 700;
+            </div>
 
-  cursor: pointer;
+            <div class="price">
+              €6
+              <span>/month</span>
+            </div>
 
-  box-shadow:
-    0 0 25px rgba(35, 164, 255, 0.22);
+            <p>
+              Special founding access for the
+              first 5,000 members.
+            </p>
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
+            <ul>
+              <li>Everything in Free</li>
+              <li>Full Pro access</li>
+              <li>Advanced AI planning</li>
+              <li>Priority features</li>
+              <li>Founding Member status</li>
+            </ul>
 
-.goal-box button:hover {
-  transform: translateY(-2px);
+            <button>
+              Become a Founder
+            </button>
 
-  box-shadow:
-    0 0 35px rgba(35, 164, 255, 0.35);
-}
+          </div>
 
 
-/* =========================================================
-   GOAL RESULT
-   ========================================================= */
+          <div class="plan-card">
 
-#goalResult {
-  width: min(760px, 100%);
+            <div class="plan-top">
 
-  margin: 50px auto 0;
-}
+              <span class="plan-label">
+                COMPLETE
+              </span>
 
-.result-card {
-  padding: 42px;
+              <h3>
+                Pro
+              </h3>
 
-  border: 1px solid rgba(70, 180, 255, 0.2);
+            </div>
 
-  border-radius: 28px;
+            <div class="price">
+              €25
+              <span>/month</span>
+            </div>
 
-  background:
-    rgba(4, 19, 31, 0.75);
+            <p>
+              The complete BOFYT AI experience.
+            </p>
 
-  backdrop-filter: blur(20px);
+            <ul>
+              <li>Everything in Free</li>
+              <li>Advanced AI planning</li>
+              <li>Unlimited goals</li>
+              <li>Advanced progress tools</li>
+              <li>Financial management</li>
+              <li>Payment scheduling</li>
+            </ul>
 
-  text-align: left;
+            <button>
+              Go Pro
+            </button>
 
-  animation:
-    bofytAppear 0.45s ease forwards;
-}
+          </div>
 
-.result-label {
-  color: #687786;
+        </div>
 
-  font-size: 11px !important;
+      </div>
 
-  letter-spacing: 3px;
+    </section>
 
-  font-weight: 700;
 
-  margin-bottom: 18px !important;
-}
+    <!-- =========================
+         FINAL CTA
+         ========================= -->
 
-.result-card h2 {
-  font-size: clamp(32px, 6vw, 58px);
+    <section class="final-cta">
 
-  line-height: 1;
+      <div class="cta-glow"></div>
 
-  letter-spacing: -2px;
+      <div class="section-eyebrow">
+        BOFYT AI
+      </div>
 
-  margin-bottom: 22px;
-}
+      <h2>
+        Your future starts<br>
+        with a goal.
+      </h2>
 
-.result-message {
-  color: #fff !important;
+      <p>
+        What do you want to achieve?
+      </p>
 
-  font-size: 22px !important;
+      <div class="goal-box">
 
-  margin-bottom: 8px !important;
-}
+        <div class="goal-sparkle">✦</div>
 
-.result-description {
-  color: #8e99a6 !important;
+        <input
+          id="goalInputBottom"
+          type="text"
+          placeholder="I want to..."
+          autocomplete="off"
+          aria-label="Your goal"
+        >
 
-  font-size: 16px !important;
+        <button id="goalButtonBottom">
+          Start <span>→</span>
+        </button>
 
-  line-height: 1.7;
+      </div>
 
-  max-width: 580px;
-}
+    </section>
 
-.continue-button {
-  margin-top: 30px;
+  </main>
 
-  padding: 15px 22px;
 
-  border: 0;
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
-  border-radius: 13px;
+  <footer>
 
-  background: #fff;
+    <div class="footer-logo">
+      BOFYT <span>AI</span>
+    </div>
 
-  color: #050505;
+    <p>
+      What do you want to achieve?
+    </p>
 
-  font-weight: 600;
+    <span class="footer-copy">
+      © 2026 BOFYT AI
+    </span>
 
-  font-size: 14px;
+  </footer>
 
-  cursor: pointer;
-}
 
+  <script src="script.js"></script>
 
-/* =========================================================
-   CONTENT SECTIONS
-   ========================================================= */
-
-.content-section {
-  position: relative;
-
-  padding:
-    150px 24px
-    170px;
-
-  border-top:
-    1px solid rgba(
-      50,
-      160,
-      235,
-      0.12
-    );
-}
-
-.container {
-  width: min(1100px, 90%);
-
-  margin: 0 auto;
-}
-
-.content-section h2 {
-  font-size: clamp(
-    48px,
-    7vw,
-    82px
-  );
-
-  line-height: 0.98;
-
-  letter-spacing: -4px;
-
-  margin-bottom: 30px;
-}
-
-.section-intro {
-  max-width: 700px;
-
-  color: var(--muted);
-
-  font-size: 19px;
-
-  line-height: 1.7;
-
-  margin-bottom: 65px;
-}
-
-
-/* =========================================================
-   FEATURES
-   ========================================================= */
-
-.features {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 18px;
-}
-
-.feature {
-  position: relative;
-
-  min-height: 260px;
-
-  padding: 34px;
-
-  border:
-    1px solid rgba(
-      75,
-      175,
-      235,
-      0.14
-    );
-
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(10, 30, 45, 0.6),
-      rgba(3, 12, 21, 0.7)
-    );
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.feature:hover {
-  transform: translateY(-5px);
-
-  border-color:
-    rgba(50, 175, 255, 0.35);
-
-  box-shadow:
-    0 15px 50px
-    rgba(0, 90, 170, 0.12);
-}
-
-.feature-number {
-  display: block;
-
-  color: var(--blue);
-
-  font-size: 12px;
-
-  letter-spacing: 3px;
-
-  margin-bottom: 35px;
-}
-
-.feature-icon {
-  display: block;
-
-  color: var(--blue);
-
-  font-size: 30px;
-
-  margin-bottom: 30px;
-}
-
-.feature h3 {
-  font-size: 23px;
-
-  margin-bottom: 15px;
-}
-
-.feature p {
-  color: var(--muted);
-
-  line-height: 1.65;
-
-  font-size: 15px;
-}
-
-
-/* =========================================================
-   EXPERIENCE
-   ========================================================= */
-
-.experience-section {
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(0, 115, 210, 0.1),
-      transparent 40%
-    );
-}
-
-
-/* =========================================================
-   PRICING
-   ========================================================= */
-
-.pricing {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 18px;
-}
-
-.plan-card {
-  position: relative;
-
-  padding: 36px;
-
-  border:
-    1px solid rgba(
-      255,
-      255,
-      255,
-      0.09
-    );
-
-  border-radius: 25px;
-
-  background:
-    rgba(7, 19, 30, 0.72);
-}
-
-.plan-card.founding {
-  border-color:
-    rgba(42, 169, 255, 0.5);
-
-  box-shadow:
-    0 0 50px
-    rgba(0, 130, 230, 0.1);
-}
-
-.founding-badge {
-  position: absolute;
-
-  top: 18px;
-  right: 18px;
-
-  padding: 7px 10px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(42, 169, 255, 0.12);
-
-  border:
-    1px solid rgba(42, 169, 255, 0.35);
-
-  color: var(--blue);
-
-  font-size: 9px;
-
-  letter-spacing: 1px;
-}
-
-.plan-label {
-  color: #687786;
-
-  font-size: 11px;
-
-  letter-spacing: 3px;
-}
-
-.plan-top h3 {
-  font-size: 26px;
-
-  margin-top: 12px;
-}
-
-.price {
-  margin: 35px 0 15px;
-
-  font-size: 44px;
-
-  font-weight: 700;
-}
-
-.price span {
-  color: #707b87;
-
-  font-size: 14px;
-
-  font-weight: 400;
-}
-
-.plan-card > p {
-  color: var(--muted);
-
-  line-height: 1.6;
-
-  margin-bottom: 25px;
-}
-
-.plan-card ul {
-  list-style: none;
-
-  display: grid;
-
-  gap: 12px;
-
-  margin-bottom: 30px;
-}
-
-.plan-card li {
-  color: #aeb7c1;
-
-  font-size: 14px;
-}
-
-.plan-card li::before {
-  content: "✓";
-
-  color: var(--blue);
-
-  margin-right: 9px;
-}
-
-.plan-card button {
-  width: 100%;
-
-  height: 50px;
-
-  border-radius: 13px;
-
-  border:
-    1px solid rgba(
-      255,
-      255,
-      255,
-      0.15
-    );
-
-  background:
-    rgba(255, 255, 255, 0.05);
-
-  color: #fff;
-
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   FINAL CTA
-   ========================================================= */
-
-.final-cta {
-  position: relative;
-
-  text-align: center;
-
-  padding:
-    180px 24px
-    190px;
-
-  overflow: hidden;
-}
-
-.cta-glow {
-  position: absolute;
-
-  width: 700px;
-  height: 500px;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0, 130, 240, 0.17),
-      transparent 65%
-    );
-
-  pointer-events: none;
-}
-
-.final-cta h2 {
-  position: relative;
-
-  font-size: clamp(
-    48px,
-    7vw,
-    82px
-  );
-
-  line-height: 1;
-
-  letter-spacing: -4px;
-
-  margin-bottom: 25px;
-}
-
-.final-cta > p {
-  position: relative;
-
-  color: var(--muted);
-
-  font-size: 19px;
-
-  margin-bottom: 45px;
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-  padding:
-    55px 6%
-    40px;
-
-  border-top:
-    1px solid
-    rgba(255, 255, 255, 0.08);
-
-  text-align: center;
-}
-
-.footer-logo {
-  color: #fff;
-
-  font-size: 20px;
-
-  font-weight: 700;
-
-  letter-spacing: 4px;
-
-  margin-bottom: 15px;
-}
-
-.footer-logo span {
-  color: var(--blue);
-}
-
-footer p {
-  color: #687583;
-
-  font-size: 13px;
-
-  margin-bottom: 20px;
-}
-
-.footer-copy {
-  color: #454e58;
-
-  font-size: 11px;
-}
-
-
-/* =========================================================
-   QUESTION
-   ========================================================= */
-
-.question-box {
-  margin-top: 35px;
-}
-
-.question-box label {
-  display: block;
-
-  color: #d8dee5;
-
-  font-size: 17px;
-
-  line-height: 1.5;
-
-  margin-bottom: 15px;
-}
-
-.question-box textarea {
-  width: 100%;
-
-  min-height: 130px;
-
-  padding: 18px;
-
-  resize: vertical;
-
-  border-radius: 16px;
-
-  border:
-    1px solid
-    rgba(60, 170, 240, 0.18);
-
-  background:
-    rgba(255, 255, 255, 0.035);
-
-  color: #fff;
-
-  outline: none;
-
-  font-family: inherit;
-
-  font-size: 15px;
-
-  line-height: 1.5;
-}
-
-
-/* =========================================================
-   PATH PREVIEW
-   ========================================================= */
-
-.path-preview {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 12px;
-
-  margin-top: 35px;
-}
-
-.path-preview > div {
-  padding: 22px;
-
-  border:
-    1px solid
-    rgba(60, 170, 240, 0.13);
-
-  border-radius: 18px;
-
-  background:
-    rgba(255, 255, 255, 0.025);
-}
-
-.path-preview span {
-  display: block;
-
-  color: var(--blue);
-
-  font-size: 11px;
-
-  letter-spacing: 2px;
-
-  margin-bottom: 18px;
-}
-
-.path-preview strong {
-  display: block;
-
-  font-size: 16px;
-
-  margin-bottom: 8px;
-}
-
-.path-preview p {
-  color: #777 !important;
-
-  font-size: 13px !important;
-
-  line-height: 1.5;
-
-  margin: 0 !important;
-}
-
-
-/* =========================================================
-   GOAL SUMMARY
-   ========================================================= */
-
-.goal-summary {
-  margin-top: 35px;
-
-  display: grid;
-
-  gap: 12px;
-}
-
-.goal-summary p {
-  padding: 20px;
-
-  border-radius: 16px;
-
-  background:
-    rgba(255, 255, 255, 0.035);
-
-  color: #999 !important;
-
-  font-size: 14px !important;
-
-  line-height: 1.6;
-
-  margin: 0 !important;
-}
-
-.goal-summary strong {
-  color: #fff;
-}
-
-
-/* =========================================================
-   ANIMATION
-   ========================================================= */
-
-@keyframes bofytAppear {
-
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  header {
-    padding: 32px 42px;
-  }
-
-  .logo {
-    font-size: 26px;
-    letter-spacing: 4px;
-  }
-
-  .desktop-nav {
-    display: none;
-  }
-
-  .menu-button {
-    display: flex;
-  }
-
-
-  /* HERO */
-
-  .hero {
-    min-height: calc(100vh - 90px);
-
-    padding:
-      145px 22px
-      150px;
-  }
-
-  .eyebrow {
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    margin-bottom: 40px;
-  }
-
-  .hero h1 {
-    max-width: 680px;
-
-    font-size:
-      clamp(50px, 14vw, 72px);
-
-    line-height: 0.95;
-
-    letter-spacing: -3.5px;
-
-    margin-bottom: 42px;
-  }
-
-  .hero > p {
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    margin-bottom: 45px;
-  }
-
-
-  /* GOAL */
-
-  .goal-box {
-    width: 100%;
-
-    border-radius: 24px;
-  }
-
-  .goal-box input {
-    height: 76px;
-
-    padding:
-      0 10px
-      0 20px;
-
-    font-size: 17px;
-  }
-
-  .goal-box button {
-    height: 64px;
-
-    padding: 0 25px;
-
-    border-radius: 17px;
-
-    font-size: 16px;
-  }
-
-
-  /* SECTIONS */
-
-  .content-section {
-    padding:
-      110px 22px
-      120px;
-  }
-
-  .container {
-    width: 100%;
-  }
-
-  .content-section h2 {
-    font-size:
-      clamp(45px, 12vw, 62px);
-
-    letter-spacing: -3px;
-  }
-
-  .section-intro {
-    font-size: 17px;
-  }
-
-
-  /* FEATURES */
-
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .feature {
-    min-height: auto;
-
-    padding: 30px;
-  }
-
-
-  /* PRICING */
-
-  .pricing {
-    grid-template-columns: 1fr;
-  }
-
-
-  /* FINAL */
-
-  .final-cta {
-    padding:
-      130px 22px
-      140px;
-  }
-
-  .final-cta h2 {
-    font-size:
-      clamp(46px, 12vw, 62px);
-
-    letter-spacing: -3px;
-  }
-
-
-  /* RESULT */
-
-  #goalResult {
-    margin-top: 35px;
-  }
-
-  .result-card {
-    padding: 28px 22px;
-
-    border-radius: 22px;
-  }
-
-  .path-preview {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 390px) {
-
-  header {
-    padding:
-      28px 28px;
-  }
-
-  .logo {
-    font-size: 23px;
-  }
-
-  .hero {
-    padding-top: 125px;
-  }
-
-  .hero h1 {
-    font-size: 49px;
-  }
-
-  .goal-box button {
-    padding: 0 20px;
-  }
-
-}
+</body>
+</html>
