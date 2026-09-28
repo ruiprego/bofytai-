@@ -8,29 +8,46 @@ const mobileMenuClose = document.getElementById("mobileMenuClose");
 
 if (menuButton) {
   menuButton.addEventListener("click", () => {
-    mobileMenu.classList.add("active");
-    menuButton.setAttribute("aria-expanded", "true");
+
+    mobileMenu.classList.add("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
   });
 }
 
 if (mobileMenuClose) {
   mobileMenuClose.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-    menuButton.setAttribute("aria-expanded", "false");
+
+    mobileMenu.classList.remove("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
   });
 }
 
 
-/* Close mobile menu when a link is clicked */
+/* Close mobile menu when clicking a link */
 
 document.querySelectorAll(".mobile-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
 
-    if (menuButton) {
-      menuButton.setAttribute("aria-expanded", "false");
-    }
+  link.addEventListener("click", () => {
+
+    mobileMenu.classList.remove("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
   });
+
 });
 
 
@@ -38,60 +55,55 @@ document.querySelectorAll(".mobile-menu a").forEach(link => {
    GOAL EXPERIENCE
    ========================= */
 
-function processGoal(inputId, resultId) {
+const goalInput = document.getElementById("goalInput");
+const goalButton = document.getElementById("goalButton");
+const goalResult = document.getElementById("goalResult");
 
-  const input = document.getElementById(inputId);
-  const result = document.getElementById(resultId);
 
-  if (!input || !result) return;
+function startGoal() {
 
-  const goal = input.value.trim();
+  const goal = goalInput.value.trim();
 
   if (!goal) {
 
-    input.focus();
+    goalInput.focus();
 
-    input.style.boxShadow =
-      "0 0 20px rgba(255,80,80,0.45)";
-
-    setTimeout(() => {
-      input.style.boxShadow = "none";
-    }, 700);
+    goalInput.placeholder =
+      "Tell BOFYT AI what you want to achieve...";
 
     return;
   }
 
 
-  result.innerHTML = `
+  goalResult.innerHTML = `
+
     <div class="goal-result-card">
 
       <h3>
-        Let's work towards it.
+        Your goal
       </h3>
 
       <p>
-        Your goal:
-        <strong>${escapeHtml(goal)}</strong>
+        “${escapeHtml(goal)}”
       </p>
 
-      <p style="margin-top:12px;">
-        BOFYT AI will turn this into a clear,
-        practical path forward.
+      <p style="margin-top:15px;">
+        BOFYT AI is ready to turn this into
+        a clear path forward.
       </p>
 
     </div>
+
   `;
 
-  result.scrollIntoView({
+  goalResult.scrollIntoView({
     behavior: "smooth",
     block: "center"
   });
 }
 
 
-/* =========================
-   SECURITY
-   ========================= */
+/* Prevent HTML injection */
 
 function escapeHtml(text) {
 
@@ -103,94 +115,19 @@ function escapeHtml(text) {
 }
 
 
-/* =========================
-   TOP GOAL BOX
-   ========================= */
-
-const goalButton = document.getElementById("goalButton");
-
-if (goalButton) {
-
-  goalButton.addEventListener("click", () => {
-
-    processGoal(
-      "goalInput",
-      "goalResult"
-    );
-
-  });
-
-}
+goalButton.addEventListener(
+  "click",
+  startGoal
+);
 
 
-/* Enter key */
-
-const goalInput = document.getElementById("goalInput");
-
-if (goalInput) {
-
-  goalInput.addEventListener("keydown", event => {
+goalInput.addEventListener(
+  "keydown",
+  (event) => {
 
     if (event.key === "Enter") {
-
-      processGoal(
-        "goalInput",
-        "goalResult"
-      );
-
+      startGoal();
     }
 
-  });
-
-}
-
-
-/* =========================
-   BOTTOM GOAL BOX
-   ========================= */
-
-const goalButtonBottom =
-  document.getElementById("goalButtonBottom");
-
-if (goalButtonBottom) {
-
-  goalButtonBottom.addEventListener("click", () => {
-
-    const input =
-      document.getElementById("goalInputBottom");
-
-    if (!input) return;
-
-    const value = input.value.trim();
-
-    if (!value) {
-      input.focus();
-      return;
-    }
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-    setTimeout(() => {
-
-      const mainInput =
-        document.getElementById("goalInput");
-
-      if (mainInput) {
-
-        mainInput.value = value;
-
-        processGoal(
-          "goalInput",
-          "goalResult"
-        );
-
-      }
-
-    }, 500);
-
-  });
-
-}
+  }
+);
