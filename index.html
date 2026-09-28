@@ -16,11 +16,9 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-       ========================= -->
+  <!-- NAVIGATION -->
 
-  <header class="site-header">
+  <header>
 
     <a href="#" class="logo">
       BOFYT <span>AI</span>
@@ -46,92 +44,94 @@
   </header>
 
 
-  <!-- =========================
-       MOBILE MENU
-       ========================= -->
+  <!-- MOBILE MENU -->
 
   <div class="mobile-menu" id="mobileMenu">
 
-    <div class="mobile-menu-inner">
+    <a href="#how-it-works">How it works</a>
+    <a href="#experience">Solutions</a>
+    <a href="#pricing">Pricing</a>
 
-      <a href="#how-it-works">How it works</a>
-      <a href="#experience">Solutions</a>
-      <a href="#pricing">Pricing</a>
-
-      <button
-        class="mobile-menu-close"
-        id="mobileMenuClose"
-      >
-        Close
-      </button>
-
-    </div>
+    <button
+      class="mobile-menu-close"
+      id="mobileMenuClose"
+    >
+      Close
+    </button>
 
   </div>
 
 
-  <!-- =========================
-       MAIN
-       ========================= -->
+  <!-- MAIN -->
 
   <main>
 
-
-    <!-- =========================
-         HERO
-         ========================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
-      <div class="hero-glow"></div>
+      <!-- BACKGROUND IMAGE -->
 
-      <div class="eyebrow">
-        AI FOR WHAT'S NEXT
-      </div>
+      <div class="hero-image">
 
-      <h1>
-        What do you<br>
-        want to<br>
-        <span>achieve?</span>
-      </h1>
-
-      <p class="hero-description">
-        Tell BOFYT AI what you want to achieve.
-        We'll help turn the idea into a clear path forward.
-      </p>
-
-
-      <!-- GOAL INPUT -->
-
-      <div class="goal-box">
-
-        <div class="goal-sparkle">✦</div>
-
-        <input
-          id="goalInput"
-          type="text"
-          placeholder="I want to..."
-          autocomplete="off"
-          aria-label="Your goal"
+        <img
+          src="bofyt-hero.png"
+          alt="BOFYT AI"
         >
 
-        <button id="goalButton">
-          Start <span>→</span>
-        </button>
-
       </div>
 
 
-      <!-- AI RESULT -->
+      <!-- DARK OVERLAY -->
 
-      <div id="goalResult"></div>
+      <div class="hero-overlay"></div>
+
+
+      <!-- HERO CONTENT -->
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          AI FOR WHAT'S NEXT
+        </div>
+
+        <h1>
+          What do you want to
+          <span>achieve?</span>
+        </h1>
+
+        <p>
+          Tell BOFYT AI what you want to achieve.
+          We'll help turn the idea into a clear path forward.
+        </p>
+
+
+        <div class="goal-box">
+
+          <input
+            id="goalInput"
+            type="text"
+            placeholder="I want to..."
+            autocomplete="off"
+            aria-label="Your goal"
+          >
+
+          <button id="goalButton">
+            Start →
+          </button>
+
+        </div>
+
+
+        <div id="goalResult"></div>
+
+      </div>
 
     </section>
 
 
-    <!-- =========================
-         HOW IT WORKS
-         ========================= -->
+
+    <!-- HOW IT WORKS -->
 
     <section id="how-it-works" class="content-section">
 
@@ -215,9 +215,8 @@
     </section>
 
 
-    <!-- =========================
-         EXPERIENCE
-         ========================= -->
+
+    <!-- EXPERIENCE -->
 
     <section
       id="experience"
@@ -303,9 +302,8 @@
     </section>
 
 
-    <!-- =========================
-         PRICING
-         ========================= -->
+
+    <!-- PRICING -->
 
     <section
       id="pricing"
@@ -331,11 +329,9 @@
 
         <div class="pricing">
 
-
           <div class="plan-card">
 
             <div class="plan-top">
-
               <span class="plan-label">
                 START
               </span>
@@ -343,7 +339,6 @@
               <h3>
                 Free
               </h3>
-
             </div>
 
             <div class="price">
@@ -458,9 +453,8 @@
     </section>
 
 
-    <!-- =========================
-         FINAL CTA
-         ========================= -->
+
+    <!-- FINAL CTA -->
 
     <section class="final-cta">
 
@@ -481,8 +475,6 @@
 
       <div class="goal-box">
 
-        <div class="goal-sparkle">✦</div>
-
         <input
           id="goalInputBottom"
           type="text"
@@ -492,7 +484,7 @@
         >
 
         <button id="goalButtonBottom">
-          Start <span>→</span>
+          Start →
         </button>
 
       </div>
@@ -502,9 +494,8 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-       ========================= -->
+
+  <!-- FOOTER -->
 
   <footer>
 
