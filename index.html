@@ -16,7 +16,11 @@
 
 <body>
 
-  <header>
+  <!-- =========================
+       HEADER
+       ========================= -->
+
+  <header class="site-header">
 
     <a href="#" class="logo">
       BOFYT <span>AI</span>
@@ -42,6 +46,10 @@
   </header>
 
 
+  <!-- =========================
+       MOBILE MENU
+       ========================= -->
+
   <div class="mobile-menu" id="mobileMenu">
 
     <a href="#how-it-works">How it works</a>
@@ -58,76 +66,61 @@
   </div>
 
 
+  <!-- =========================
+       MAIN
+       ========================= -->
+
   <main>
 
-    <!-- ===================================================
+
+    <!-- =========================
          HERO
-         =================================================== -->
+         ========================= -->
 
     <section class="hero">
 
-      <!-- MAIN BOFYT AI IMAGE -->
-
-      <div class="hero-image">
+      <div class="hero-image-wrap">
 
         <img
           src="bofyt-hero.png"
           alt="BOFYT AI"
+          class="hero-image"
         >
 
-        <div class="hero-image-overlay"></div>
+        <!-- INTERACTIVE GOAL BOX -->
 
-      </div>
+        <div class="hero-goal-box">
 
-
-      <!-- CONTENT OVER THE IMAGE -->
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          AI FOR WHAT'S NEXT
-        </div>
-
-        <h1>
-          What do you<br>
-          want to<br>
-          <span>achieve?</span>
-        </h1>
-
-        <p>
-          Tell BOFYT AI what you want to achieve.
-          We'll help turn the idea into a clear path forward.
-        </p>
-
-
-        <div class="goal-box">
+          <span class="sparkle">✦</span>
 
           <input
             id="goalInput"
             type="text"
-            placeholder="I want to..."
+            placeholder="What do you want to achieve?"
             autocomplete="off"
-            aria-label="Your goal"
+            aria-label="What do you want to achieve?"
           >
 
-          <button id="goalButton">
-            Start →
+          <button id="goalButton" aria-label="Start">
+            →
           </button>
 
         </div>
 
-
-        <div id="goalResult"></div>
-
       </div>
+
+
+      <!-- AI RESULT -->
+
+      <div id="goalResult"></div>
 
     </section>
 
 
 
-    <!-- ===================================================
+    <!-- =========================
          HOW IT WORKS
-         =================================================== -->
+         ========================= -->
 
     <section id="how-it-works" class="content-section">
 
@@ -151,39 +144,57 @@
         <div class="features">
 
           <div class="feature">
-            <span class="feature-number">01</span>
 
-            <h3>Understand</h3>
+            <span class="feature-number">
+              01
+            </span>
+
+            <h3>
+              Understand
+            </h3>
 
             <p>
               Tell us what you want.
               BOFYT AI helps clarify the goal
               behind the idea.
             </p>
+
           </div>
 
 
           <div class="feature">
-            <span class="feature-number">02</span>
 
-            <h3>Build</h3>
+            <span class="feature-number">
+              02
+            </span>
+
+            <h3>
+              Build
+            </h3>
 
             <p>
               Get a structured path with practical
               steps designed around your objective.
             </p>
+
           </div>
 
 
           <div class="feature">
-            <span class="feature-number">03</span>
 
-            <h3>Achieve</h3>
+            <span class="feature-number">
+              03
+            </span>
+
+            <h3>
+              Achieve
+            </h3>
 
             <p>
               Track progress, adapt the plan and keep
               moving towards the outcome you want.
             </p>
+
           </div>
 
         </div>
@@ -194,9 +205,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =========================
          EXPERIENCE
-         =================================================== -->
+         ========================= -->
 
     <section
       id="experience"
@@ -224,9 +235,13 @@
 
           <div class="feature">
 
-            <span class="feature-icon">↗</span>
+            <span class="feature-icon">
+              ↗
+            </span>
 
-            <h3>Career</h3>
+            <h3>
+              Career
+            </h3>
 
             <p>
               Find your next opportunity and build
@@ -238,9 +253,13 @@
 
           <div class="feature">
 
-            <span class="feature-icon">◇</span>
+            <span class="feature-icon">
+              ◇
+            </span>
 
-            <h3>Business</h3>
+            <h3>
+              Business
+            </h3>
 
             <p>
               Turn an idea into a structured
@@ -252,9 +271,13 @@
 
           <div class="feature">
 
-            <span class="feature-icon">+</span>
+            <span class="feature-icon">
+              +
+            </span>
 
-            <h3>Personal</h3>
+            <h3>
+              Personal
+            </h3>
 
             <p>
               Set meaningful goals and turn them
@@ -271,9 +294,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =========================
          PRICING
-         =================================================== -->
+         ========================= -->
 
     <section
       id="pricing"
@@ -300,15 +323,25 @@
         <div class="pricing">
 
 
+          <!-- FREE -->
+
           <div class="plan-card">
 
             <div class="plan-top">
-              <span class="plan-label">START</span>
-              <h3>Free</h3>
+
+              <span class="plan-label">
+                START
+              </span>
+
+              <h3>
+                Free
+              </h3>
+
             </div>
 
             <div class="price">
-              €0 <span>/month</span>
+              €0
+              <span>/month</span>
             </div>
 
             <p>
@@ -331,6 +364,8 @@
 
 
 
+          <!-- FOUNDING MEMBER -->
+
           <div class="plan-card founding">
 
             <div class="founding-badge">
@@ -338,12 +373,20 @@
             </div>
 
             <div class="plan-top">
-              <span class="plan-label">EARLY</span>
-              <h3>Founding Member</h3>
+
+              <span class="plan-label">
+                EARLY
+              </span>
+
+              <h3>
+                Founding Member
+              </h3>
+
             </div>
 
             <div class="price">
-              €6 <span>/month</span>
+              €6
+              <span>/month</span>
             </div>
 
             <p>
@@ -367,15 +410,25 @@
 
 
 
+          <!-- PRO -->
+
           <div class="plan-card">
 
             <div class="plan-top">
-              <span class="plan-label">COMPLETE</span>
-              <h3>Pro</h3>
+
+              <span class="plan-label">
+                COMPLETE
+              </span>
+
+              <h3>
+                Pro
+              </h3>
+
             </div>
 
             <div class="price">
-              €25 <span>/month</span>
+              €25
+              <span>/month</span>
             </div>
 
             <p>
@@ -405,9 +458,9 @@
 
 
 
-    <!-- ===================================================
+    <!-- =========================
          FINAL CTA
-         =================================================== -->
+         ========================= -->
 
     <section class="final-cta">
 
@@ -448,6 +501,10 @@
   </main>
 
 
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
   <footer>
 
