@@ -11,16 +11,661 @@
     content="BOFYT AI turns what you want to achieve into a clear path forward."
   >
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #020a12;
+      color: #ffffff;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 105px;
+      padding: 30px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+
+    .logo {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 8px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #32a9ff;
+      letter-spacing: 2px;
+      margin-left: 3px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .desktop-nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .desktop-nav a:hover {
+      color: #38aaff;
+    }
+
+    .menu-button {
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: none;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      width: 32px;
+      height: 3px;
+      background: white;
+      border-radius: 5px;
+      display: block;
+    }
+
+
+    /* =========================
+       MOBILE MENU
+       ========================= */
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 8, 15, 0.98);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      z-index: 50;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+    }
+
+    .mobile-menu-close {
+      margin-top: 20px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 50% 65%,
+          rgba(0, 105, 190, 0.28),
+          transparent 45%
+        ),
+        #020a12;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: min(720px, 75vh);
+      object-fit: cover;
+      object-position: center top;
+      z-index: 1;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: min(720px, 75vh);
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(1,7,13,0.15) 0%,
+          rgba(1,7,13,0.02) 45%,
+          #020a12 100%
+        );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* =========================
+       GOAL BOX
+       ========================= */
+
+    .goal-area {
+      position: relative;
+      z-index: 10;
+      width: min(90%, 760px);
+      margin: 0 auto 70px;
+    }
+
+    .goal-box {
+      width: 100%;
+      min-height: 108px;
+      padding: 8px;
+      border-radius: 60px;
+
+      display: flex;
+      align-items: center;
+
+      background: rgba(3, 16, 28, 0.88);
+      border: 2px solid #159fff;
+
+      box-shadow:
+        0 0 25px rgba(18, 157, 255, 0.35),
+        inset 0 0 25px rgba(0, 120, 255, 0.08);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .goal-icon {
+      width: 70px;
+      min-width: 70px;
+      text-align: center;
+      font-size: 30px;
+      color: white;
+    }
+
+    .goal-input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 24px;
+      padding: 15px 10px;
+    }
+
+    .goal-input::placeholder {
+      color: rgba(210,220,235,0.72);
+    }
+
+    .goal-button {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(
+        135deg,
+        #43baff,
+        #2799ed
+      );
+      color: white;
+      font-size: 42px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-shadow:
+        0 0 25px rgba(40, 167, 255, 0.4);
+
+      transition: transform 0.2s ease;
+    }
+
+    .goal-button:hover {
+      transform: scale(1.05);
+    }
+
+    .goal-button:active {
+      transform: scale(0.96);
+    }
+
+
+    /* =========================
+       RESULT
+       ========================= */
+
+    #goalResult {
+      margin-top: 20px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: 0.5s ease;
+    }
+
+    #goalResult.show {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .result-card {
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(5, 20, 34, 0.9);
+      border: 1px solid rgba(45, 168, 255, 0.5);
+      box-shadow: 0 0 30px rgba(0, 120, 255, 0.12);
+    }
+
+    .result-card small {
+      display: block;
+      color: #39aaff;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      font-size: 11px;
+    }
+
+    .result-card h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .result-card p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       CONTENT
+       ========================= */
+
+    .content-section {
+      padding: 130px 7%;
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(0, 90, 160, 0.18),
+          transparent 45%
+        ),
+        #020a12;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-eyebrow {
+      color: #3aabff;
+      font-size: 12px;
+      letter-spacing: 5px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 30px;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      color: rgba(255,255,255,0.6);
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 70px;
+    }
+
+    .feature {
+      padding: 35px;
+      min-height: 260px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 25px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .feature-number,
+    .feature-icon {
+      color: #35aaff;
+      font-size: 14px;
+      letter-spacing: 3px;
+    }
+
+    .feature h3 {
+      margin: 35px 0 15px;
+      font-size: 25px;
+    }
+
+    .feature p {
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       PRICING
+       ========================= */
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 70px;
+    }
+
+    .plan-card {
+      position: relative;
+      padding: 35px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .plan-card.founding {
+      border-color: rgba(43, 166, 255, 0.65);
+      box-shadow: 0 0 40px rgba(0, 120, 255, 0.1);
+    }
+
+    .founding-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: #37aaff;
+    }
+
+    .plan-label {
+      color: #37aaff;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .plan-card h3 {
+      margin-top: 15px;
+      font-size: 28px;
+    }
+
+    .price {
+      margin: 35px 0 15px;
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    .price span {
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .plan-card p {
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .plan-card ul {
+      margin: 25px 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.7);
+      line-height: 2;
+    }
+
+    .plan-card button {
+      width: 100%;
+      padding: 15px;
+      border-radius: 30px;
+      border: 1px solid #2fa9ff;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .plan-card.founding button {
+      background: #2da9ff;
+    }
+
+
+    /* =========================
+       FINAL CTA
+       ========================= */
+
+    .final-cta {
+      padding: 150px 7%;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 100, 190, 0.2),
+          transparent 55%
+        ),
+        #020a12;
+    }
+
+    .final-cta h2 {
+      max-width: 800px;
+      margin: auto auto 25px;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 35px;
+    }
+
+    .final-cta .goal-area {
+      margin-bottom: 0;
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      padding: 60px 7%;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #01070d;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 7px;
+    }
+
+    .footer-logo span {
+      color: #35aaff;
+      letter-spacing: 2px;
+    }
+
+    footer p {
+      margin: 15px 0;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 12px;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        height: 90px;
+        padding: 22px 7%;
+      }
+
+      .logo {
+        font-size: 25px;
+        letter-spacing: 6px;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 100svh;
+        justify-content: flex-end;
+      }
+
+      .hero-image {
+        height: 54svh;
+        min-height: 390px;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .hero-overlay {
+        height: 65svh;
+      }
+
+      .goal-area {
+        width: 92%;
+        margin-bottom: 35px;
+      }
+
+      .goal-box {
+        min-height: 82px;
+        border-radius: 48px;
+        padding: 5px;
+      }
+
+      .goal-icon {
+        width: 48px;
+        min-width: 48px;
+        font-size: 23px;
+      }
+
+      .goal-input {
+        font-size: 17px;
+        padding: 10px 4px;
+      }
+
+      .goal-button {
+        width: 68px;
+        height: 68px;
+        font-size: 32px;
+      }
+
+      .content-section {
+        padding: 100px 7%;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+      }
+
+      .pricing {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+      }
+
+      h2 {
+        font-size: 48px;
+      }
+
+      .section-intro {
+        font-size: 17px;
+      }
+
+      .final-cta {
+        padding: 100px 7%;
+      }
+    }
+
+  </style>
 </head>
 
+
 <body>
+
 
   <!-- =========================
        HEADER
        ========================= -->
 
-  <header class="site-header">
+  <header>
 
     <a href="#" class="logo">
       BOFYT <span>AI</span>
@@ -36,7 +681,6 @@
       class="menu-button"
       id="menuButton"
       aria-label="Open menu"
-      aria-expanded="false"
     >
       <span></span>
       <span></span>
@@ -67,52 +711,55 @@
 
 
   <!-- =========================
-       MAIN
+       HERO
        ========================= -->
 
   <main>
 
-
-    <!-- =========================
-         HERO
-         ========================= -->
-
     <section class="hero">
 
-      <div class="hero-image-wrap">
+      <!-- YOUR IMAGE -->
+      <img
+        src="bofyt-hero.png"
+        alt="BOFYT AI"
+        class="hero-image"
+      >
 
-        <img
-          src="bofyt-hero.png"
-          alt="BOFYT AI"
-          class="hero-image"
-        >
+      <div class="hero-overlay"></div>
 
-        <!-- INTERACTIVE GOAL BOX -->
 
-        <div class="hero-goal-box">
+      <!-- INTERACTIVE GOAL BOX -->
 
-          <span class="sparkle">✦</span>
+      <div class="goal-area">
+
+        <div class="goal-box">
+
+          <div class="goal-icon">
+            ✦
+          </div>
 
           <input
+            class="goal-input"
             id="goalInput"
             type="text"
             placeholder="What do you want to achieve?"
             autocomplete="off"
-            aria-label="What do you want to achieve?"
           >
 
-          <button id="goalButton" aria-label="Start">
+          <button
+            class="goal-button"
+            id="goalButton"
+            aria-label="Start"
+          >
             →
           </button>
 
         </div>
 
+
+        <div id="goalResult"></div>
+
       </div>
-
-
-      <!-- AI RESULT -->
-
-      <div id="goalResult"></div>
 
     </section>
 
@@ -122,7 +769,10 @@
          HOW IT WORKS
          ========================= -->
 
-    <section id="how-it-works" class="content-section">
+    <section
+      id="how-it-works"
+      class="content-section"
+    >
 
       <div class="container">
 
@@ -136,8 +786,8 @@
         </h2>
 
         <p class="section-intro">
-          BOFYT AI turns what you want to achieve into
-          something you can actually act on.
+          BOFYT AI turns what you want to achieve
+          into something you can actually act on.
         </p>
 
 
@@ -191,8 +841,8 @@
             </h3>
 
             <p>
-              Track progress, adapt the plan and keep
-              moving towards the outcome you want.
+              Track progress, adapt the plan and
+              keep moving towards the outcome you want.
             </p>
 
           </div>
@@ -211,7 +861,7 @@
 
     <section
       id="experience"
-      class="content-section experience-section"
+      class="content-section"
     >
 
       <div class="container">
@@ -226,8 +876,9 @@
         </h2>
 
         <p class="section-intro">
-          From starting a business to changing your career,
-          learning something new or planning your next move.
+          From starting a business to changing your
+          career, learning something new or planning
+          your next move.
         </p>
 
 
@@ -300,7 +951,7 @@
 
     <section
       id="pricing"
-      class="content-section pricing-section"
+      class="content-section"
     >
 
       <div class="container">
@@ -323,21 +974,15 @@
         <div class="pricing">
 
 
-          <!-- FREE -->
-
           <div class="plan-card">
 
-            <div class="plan-top">
+            <span class="plan-label">
+              START
+            </span>
 
-              <span class="plan-label">
-                START
-              </span>
-
-              <h3>
-                Free
-              </h3>
-
-            </div>
+            <h3>
+              Free
+            </h3>
 
             <div class="price">
               €0
@@ -364,25 +1009,19 @@
 
 
 
-          <!-- FOUNDING MEMBER -->
-
           <div class="plan-card founding">
 
             <div class="founding-badge">
               FOUNDING ACCESS
             </div>
 
-            <div class="plan-top">
+            <span class="plan-label">
+              EARLY
+            </span>
 
-              <span class="plan-label">
-                EARLY
-              </span>
-
-              <h3>
-                Founding Member
-              </h3>
-
-            </div>
+            <h3>
+              Founding Member
+            </h3>
 
             <div class="price">
               €6
@@ -410,21 +1049,15 @@
 
 
 
-          <!-- PRO -->
-
           <div class="plan-card">
 
-            <div class="plan-top">
+            <span class="plan-label">
+              COMPLETE
+            </span>
 
-              <span class="plan-label">
-                COMPLETE
-              </span>
-
-              <h3>
-                Pro
-              </h3>
-
-            </div>
+            <h3>
+              Pro
+            </h3>
 
             <div class="price">
               €25
@@ -464,8 +1097,6 @@
 
     <section class="final-cta">
 
-      <div class="cta-glow"></div>
-
       <div class="section-eyebrow">
         BOFYT AI
       </div>
@@ -480,19 +1111,31 @@
       </p>
 
 
-      <div class="goal-box">
+      <div class="goal-area">
 
-        <input
-          id="goalInputBottom"
-          type="text"
-          placeholder="I want to..."
-          autocomplete="off"
-          aria-label="Your goal"
-        >
+        <div class="goal-box">
 
-        <button id="goalButtonBottom">
-          Start →
-        </button>
+          <div class="goal-icon">
+            ✦
+          </div>
+
+          <input
+            class="goal-input"
+            id="goalInputBottom"
+            type="text"
+            placeholder="What do you want to achieve?"
+          >
+
+          <button
+            class="goal-button"
+            id="goalButtonBottom"
+          >
+            →
+          </button>
+
+        </div>
+
+        <div id="goalResultBottom"></div>
 
       </div>
 
@@ -523,7 +1166,176 @@
   </footer>
 
 
-  <script src="script.js"></script>
+
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
+
+  <script>
+
+    /* =========================
+       MOBILE MENU
+       ========================= */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    const mobileMenuClose =
+      document.getElementById("mobileMenuClose");
+
+
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.add("open");
+    });
+
+
+    mobileMenuClose.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+    });
+
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+        });
+
+      });
+
+
+
+    /* =========================
+       GOAL SYSTEM
+       ========================= */
+
+    function startGoal(inputId, resultId) {
+
+      const input =
+        document.getElementById(inputId);
+
+      const result =
+        document.getElementById(resultId);
+
+      const goal =
+        input.value.trim();
+
+
+      if (!goal) {
+
+        input.focus();
+
+        input.placeholder =
+          "Tell us what you want to achieve...";
+
+        return;
+      }
+
+
+      result.innerHTML = `
+
+        <div class="result-card">
+
+          <small>BOFYT AI</small>
+
+          <h3>
+            Let's turn your goal into a path forward.
+          </h3>
+
+          <p>
+            You want to:
+            <strong>${escapeHTML(goal)}</strong>
+          </p>
+
+          <p style="margin-top:12px;">
+            BOFYT AI is ready to help you define
+            the next steps.
+          </p>
+
+        </div>
+
+      `;
+
+      result.classList.add("show");
+
+    }
+
+
+
+    function escapeHTML(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent = text;
+
+      return div.innerHTML;
+
+    }
+
+
+
+    document
+      .getElementById("goalButton")
+      .addEventListener("click", () => {
+
+        startGoal(
+          "goalInput",
+          "goalResult"
+        );
+
+      });
+
+
+    document
+      .getElementById("goalInput")
+      .addEventListener("keydown", event => {
+
+        if (event.key === "Enter") {
+
+          startGoal(
+            "goalInput",
+            "goalResult"
+          );
+
+        }
+
+      });
+
+
+
+    document
+      .getElementById("goalButtonBottom")
+      .addEventListener("click", () => {
+
+        startGoal(
+          "goalInputBottom",
+          "goalResultBottom"
+        );
+
+      });
+
+
+    document
+      .getElementById("goalInputBottom")
+      .addEventListener("keydown", event => {
+
+        if (event.key === "Enter") {
+
+          startGoal(
+            "goalInputBottom",
+            "goalResultBottom"
+          );
+
+        }
+
+      });
+
+  </script>
 
 </body>
 </html>
