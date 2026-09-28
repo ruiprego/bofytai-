@@ -154,6 +154,14 @@ body {
    GOAL BOX
    ========================= */
 
+/*
+   The visual goal box is already inside
+   bofyt-hero.png.
+
+   This HTML box is now only an
+   invisible interactive layer.
+*/
+
 .hero-goal-box {
   position: absolute;
 
@@ -163,14 +171,9 @@ body {
 
   height: 112px;
 
-  border: 3px solid #219fff;
-  border-radius: 60px;
-
-  background: rgba(3, 18, 31, 0.88);
-
-  box-shadow:
-    0 0 25px rgba(22, 158, 255, 0.45),
-    inset 0 0 20px rgba(0, 130, 255, 0.08);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 
   display: flex;
   align-items: center;
@@ -180,9 +183,13 @@ body {
 }
 
 .sparkle {
-  font-size: 30px;
+  width: 55px;
+  height: 55px;
+
   margin-left: 25px;
-  color: white;
+
+  color: transparent;
+
   flex-shrink: 0;
 }
 
@@ -204,7 +211,7 @@ body {
 }
 
 .hero-goal-box input::placeholder {
-  color: #aeb9c8;
+  color: transparent;
 }
 
 .hero-goal-box button {
@@ -214,27 +221,26 @@ body {
   border: 0;
   border-radius: 50%;
 
-  background: #36aaf7;
-  color: white;
+  background: transparent;
+  color: transparent;
 
   font-size: 48px;
   line-height: 1;
 
   cursor: pointer;
 
-  box-shadow: 0 0 25px rgba(45, 168, 255, 0.5);
+  box-shadow: none;
 
-  transition: transform 0.2s ease,
-              background 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .hero-goal-box button:hover {
-  transform: scale(1.05);
-  background: #55b9ff;
+  transform: scale(1.02);
+  background: transparent;
 }
 
 .hero-goal-box button:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 
@@ -514,6 +520,10 @@ footer p {
     object-position: center top;
   }
 
+  /* =========================
+     MOBILE GOAL OVERLAY
+     ========================= */
+
   .hero-goal-box {
     left: 4%;
     right: 4%;
@@ -521,26 +531,42 @@ footer p {
 
     height: 76px;
 
-    border-width: 2px;
+    border: none;
     border-radius: 45px;
+
+    background: transparent;
+    box-shadow: none;
 
     padding: 6px;
   }
 
   .sparkle {
+    width: 35px;
+    height: 35px;
+
     margin-left: 14px;
-    font-size: 20px;
+
+    color: transparent;
   }
 
   .hero-goal-box input {
     font-size: 16px;
     padding: 0 10px;
+    color: white;
+  }
+
+  .hero-goal-box input::placeholder {
+    color: transparent;
   }
 
   .hero-goal-box button {
     width: 62px;
     height: 62px;
-    font-size: 34px;
+
+    background: transparent;
+    color: transparent;
+
+    box-shadow: none;
   }
 
   .content-section {
